@@ -16,9 +16,9 @@ public class Csv {
     * @param fichero Lista de HashMaps con los datos a escribir.
     */
     public static void escribirCSV(ArrayList<HashMap<String, String>> fichero) {
-        String path = "ficheroCSV.csv";
+        
     
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombre))) {
             // Escribir cabeceras
             if (!fichero.isEmpty()) {
                 HashMap<String, String> primeraFila = fichero.get(0);
@@ -34,7 +34,7 @@ public class Csv {
                 bw.newLine();
             }
     
-            System.out.println("CSV creado exitosamente en: " + path);
+            System.out.println("CSV creado exitosamente en: " + nombre);
         } catch (IOException e) {
             System.err.println("Error al escribir: " + e.getMessage());
         }

@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+
 public class GestorInfo {
     List<HashMap <String, String>> items;
 
@@ -57,17 +59,26 @@ public boolean deleteItem(int index){
 public String toString(){
     String arrayString = "";
     for(int i=0; i<items.size(); i++){
-        HashMap <String, String> elemento = items.get(i);
-        for(int j=0; j<elemento.size(); j++){
-            arrayString += "Elemento " + (i+1) + 
-                           ":"
-                           
+        try{
+            for(HashMap <String, String> elemento : items){
+            arrayString += elemento + "\n";             
+            } 
+        }catch (Exception e) {
+            System.err.println("Error en la extracción de datos: " + e.getMessage());
         }
-
-        }
-
-    }
+    }return arrayString;
 }
+
+}
+
+
+
+
+
+
+
+
+
 
 
 
