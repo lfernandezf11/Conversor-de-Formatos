@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 
 public class mianDePreuba {
@@ -54,7 +54,7 @@ public class mianDePreuba {
 
    Csv.escribirCSV(gestor.getItems());
 
-    System.out.println(gestor.toString());
+    //System.out.println(gestor.toString());
     }
 
 }
