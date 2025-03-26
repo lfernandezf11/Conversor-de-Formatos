@@ -39,7 +39,7 @@ public boolean modifyItem(int index, HashMap<String, String> map){
         } catch (Exception e) {
             System.err.println("Error en la operación de modificación: " + e.getMessage());
         }
-    }
+    }return false;
 }
 
 public boolean deleteItem(int index){
@@ -50,18 +50,26 @@ public boolean deleteItem(int index){
         } catch (Exception e) {
             System.err.println("Error en la operación de borrado: " + e.getMessage());
         }
+    }return false;
+}
+
+@Override
+public String toString(){
+    String arrayString = "";
+    for(int i=0; i<items.size(); i++){
+        HashMap <String, String> elemento = items.get(i);
+        for(int j=0; j<elemento.size(); j++){
+            arrayString += "Elemento " + (i+1) + 
+                           ":"
+                           
+        }
+
+        }
+
     }
 }
 
 
 
-
-@Override
-public String toString(List<HashMap <String, String>>){
-
-}
-
-
-}
 
 
