@@ -1,13 +1,23 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+/**
+ * @author Lucía Fernández Florencio
+ */ 
 
 public class GestorInfo {
     List<HashMap <String, String>> items;
 
 public GestorInfo(){
     items = new ArrayList<HashMap<String, String>>();
+}
+
+public List<HashMap<String,String>> getItems() {
+    return this.items;
+}
+
+public void setItems(List<HashMap<String,String>> items) {
+    this.items = items;
 }
 
 public boolean addItem(HashMap<String, String> item){
@@ -58,18 +68,20 @@ public boolean deleteItem(int index){
 @Override
 public String toString(){
     String arrayString = "";
-    for(int i=0; i<items.size(); i++){
-        try{
+    try{
+        for(int i=0; i<items.size(); i++){
             for(HashMap <String, String> elemento : items){
             arrayString += elemento + "\n";             
             } 
-        }catch (Exception e) {
-            System.err.println("Error en la extracción de datos: " + e.getMessage());
         }
-    }return arrayString;
+    } catch (Exception e) {
+            System.err.println("Error en la extracción de datos: " + e.getMessage());
+    }
+    return arrayString;
+    }
 }
 
-}
+
 
 
 

@@ -15,7 +15,7 @@ public class Csv {
     * @author Angel Villorina
     * @param fichero Lista de HashMaps con los datos a escribir.
     */
-    public static void escribirCSV(ArrayList<HashMap<String, String>> fichero) {
+    public static void escribirCSV(List<HashMap<String, String>> fichero) {
         
     
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombre))) {

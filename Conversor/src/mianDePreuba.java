@@ -4,8 +4,6 @@ import java.util.HashMap;
 public class mianDePreuba {
     public static GestorInfo gestor = new GestorInfo();
     public static void main(String[] args) {
-            ArrayList<HashMap<String, String>> ficheroPalEjemplo = new ArrayList<>();
-
 
     HashMap<String, String> fila1 = new HashMap<>();
     fila1.put("nombre", "angel");
@@ -54,7 +52,9 @@ public class mianDePreuba {
     
 
 
-    Csv.escribirCSV(ficheroPalEjemplo);
+   Csv.escribirCSV(gestor.getItems());
+
+    System.out.println(gestor.toString());
     }
 
 }
