@@ -52,9 +52,10 @@ public class mianDePreuba {
     
 
 
-    Csv.escribirCSV(gestor.getItems());
+    Csv.escribirCsv(gestor.getItems());
+    
 
-    //System.out.println(gestor.toString());
+    System.out.println(gestor.toString());
     }
 
 }

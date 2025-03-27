@@ -69,13 +69,11 @@ public boolean deleteItem(int index){
 public String toString(){
     String arrayString = "";
     try{
-        for(int i=0; i<items.size(); i++){
-            for(HashMap <String, String> elemento : items){
-            arrayString += elemento + "\n";             
-            } 
-        }
+        for(HashMap <String, String> elemento : items){
+        arrayString += elemento + "\n";             
+        } 
     } catch (Exception e) {
-            System.err.println("Error en la extracción de datos: " + e.getMessage());
+        System.err.println("Error en la extracción de datos: " + e.getMessage());
     }
     return arrayString;
     }
