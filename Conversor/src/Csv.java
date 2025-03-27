@@ -22,8 +22,8 @@ abstract class Csv{
     /**
     * Lee los datos de un archivo .csv y los introduce en una estructura de datos. 
     * 
-    * @param ficheroCSV archivo del que se extraen los datos.
-    * @return La instancia de GestorInfo con los datos leídos.
+    * @param ficheroInput archivo del que se extraen los datos.
+    * @return La instancia de GestorInfo estático de la clase con los datos leídos.
     */
     public static GestorInfo leerCsv(File ficheroInput) {
         try (BufferedReader br = new BufferedReader(new FileReader(ficheroInput))) {

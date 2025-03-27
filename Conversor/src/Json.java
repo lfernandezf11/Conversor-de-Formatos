@@ -1,4 +1,4 @@
-/*import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
@@ -10,48 +10,51 @@ import java.util.List;
 * @author Lucía Fernández Florencio  
 */
 
-/*abstract class Json{
-    private static final String outputJson = "ficheroJson.json";
+abstract class Json{
+    private static final String ficheroJson = "ficheroJson.json";
+    private static GestorInfo gestorJson = new GestorInfo();
+    
+    public static GestorInfo getGestor() {//Para llamada a gestor desde el main
+        return gestorJson;
+    }
     
     /**
     * Lee los datos de un archivo .json y los introduce en una estructura de datos. 
     * 
-    * @param ficheroJson archivo del que se extraen los datos.
+    * @param ficheroInput archivo del que se extraen los datos.
+    * @return La instancia de GestorInfo estático de la clase con los datos leídos.
     */
-    /*public static GestorInfo leerJson(File ficheroJson) {
-        GestorInfo gestor = new GestorInfo();
-        try (BufferedReader br = new BufferedReader(new FileReader(ficheroJson))) {
-            while((br.readLine()) != "{"){
-                br.readLine();
-            }
-            if((br.readLine()) == "{"){
-                HashMap <String, String> item = new HashMap<>();
-                String[] par = br.readLine().trim().split(":");
-                item.put(par[0], par[1]);   
-            }else if(br.readLine() == "}")
-                
-                String [] valores = linea.trim().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-                for(int i=0; i<claves.length; i++){
-                    item.put(claves[i], valores[i]);
+    public static GestorInfo leerJson(File ficheroInput) {
+        try (BufferedReader br = new BufferedReader(new FileReader(ficheroInput))) {
+            HashMap <String, String> item;
+            for(int i=1; i<ficheroInput.length(); i++)
+                item = new HashMap<>();
+                if(br.readLine().equals("{")){
+                    do{
+                        br.readLine();
+                        String [] pares = br.readLine().trim().split(":");
+                        item.put(pares[0], pares[1]);
+                    } while(br.readLine() != "}");
+                    gestorJson.addItem(item);
                 }
-                gestor.addItem(item);
-                System.out.println(item.toString());
-            }
+            } 
         } catch (IOException e) {
             System.err.println("Error al leer: " + e.getMessage());
-        } return gestor;
+        } return gestorJson;
     }
     
     /**
     * Escribe los datos de una lista de HashMaps a un archivo CSV.
     * 
     * @param fichero Lista de HashMaps con los datos a escribir.
+    * @return true si se escribe correctamente; false en caso contrario.
     */
     /*public static boolean escribirCsv(List<HashMap<String, String>> fichero) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputCSV))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(ficheroCSV), true))) {
             String newLine = "";
+            //Implementar comprobación ficheroCSV.length() == 0 and exists.
             // Escribir cabeceras
-            if (!fichero.isEmpty()) {
+            if (!fichero.isEmpty()) { //Escribimos sólo si fichero no está vacío.
                 HashMap<String, String> primeraFila = fichero.get(0);
                 
                 for (String cabecera : primeraFila.keySet()) {
@@ -70,7 +73,30 @@ import java.util.List;
             } return true;
         } catch (IOException e) {
             System.err.println("Error al escribir: " + e.getMessage());
-            return false;
+            return false;*/
         }
     } 
-}*/
+}
+    
+
+
+
+    /*
+     * Logica para despues volver a este metodo un auto incremental
+     * 
+     * private static final String ficheroCSV = "ficheroCSV";
+        private static int contador = 1;
+
+        este bucle viene ya dntro del metodo
+
+        do {
+        ficheroCSVArchivo = ficheroCSV + "_" + contador + ".csv";
+        file = new File(ficheroCSVArchivo);
+        contador++;
+    
+        } while (file.exists());
+     */
+
+
+
+

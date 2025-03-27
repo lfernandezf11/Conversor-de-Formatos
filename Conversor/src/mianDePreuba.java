@@ -4,7 +4,8 @@ import java.util.HashMap;
 public class mianDePreuba {
     public static GestorInfo gestor = new GestorInfo();
    
-    public static File path = new File("Conversor\\docs\\coches.csv");
+    public static File pathCsv = new File("Conversor\\docs\\coches.csv");
+    public static File pathJson = new File("Conversor\\docs\\coches.json");
     public static void main(String[] args) {
         /*HashMap<String, String> fila1 = new HashMap<>();
     fila1.put("nombre", "angel");
@@ -52,11 +53,15 @@ public class mianDePreuba {
     gestor.addItem(fila7);*/
 
 
-        Csv.leerCsv(path);
+        /*Csv.leerCsv(pathCsv);
         gestor = Csv.getGestor();
         
         System.out.println(gestor.toString());
-        //Csv.escribirCsv(gestor.getItems());
+        //Csv.escribirCsv(gestor.getItems());*/
+        Json.leerJson(pathJson);
+        gestor = Json.getGestor();
+
+        System.out.println(gestor.toString());
     }
 
 
