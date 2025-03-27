@@ -1,11 +1,12 @@
-import java.util.List;
+import java.io.File;
 import java.util.HashMap;
 
 public class mianDePreuba {
     public static GestorInfo gestor = new GestorInfo();
+   
+    public static File path = new File("Conversor\\docs\\coches.csv");
     public static void main(String[] args) {
-
-    HashMap<String, String> fila1 = new HashMap<>();
+        /*HashMap<String, String> fila1 = new HashMap<>();
     fila1.put("nombre", "angel");
     fila1.put("edad", "21");
     fila1.put("Ciudad", "merida");
@@ -48,14 +49,19 @@ public class mianDePreuba {
     gestor.addItem(fila4);
     gestor.addItem(fila5);
     gestor.addItem(fila6);
-    gestor.addItem(fila7);
-    
+    gestor.addItem(fila7);*/
 
 
-    Csv.escribirCsv(gestor.getItems());
-    
-
-    System.out.println(gestor.toString());
+        Csv.leerCsv(path);
+        gestor = Csv.getGestor();
+        
+        System.out.println(gestor.toString());
+        //Csv.escribirCsv(gestor.getItems());
     }
 
+
+
+ 
 }
+
+

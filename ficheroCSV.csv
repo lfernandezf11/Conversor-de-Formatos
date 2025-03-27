@@ -1,8 +1,32 @@
-Ciudad,nombre,edad
-merida,angel,21
-29,los angeles,lucia
-Madrid,Carlos,35
-Barcelona,María,28
-Valencia,Pedro,40
-Sevilla,Ana,32
-Bilbao,Luis,27
+Marca,Modelo,Color,Año,Precio
+Toyota,Corolla,Blanco,2020,25000.00
+Honda,Civic,Azul,2019,22000.00
+Ford,Focus,Gris,2018,20000.00
+Chevrolet,Cruze,Rojo,2021,26000.00
+Volkswagen,Jetta,Negro,2017,18000.00
+BMW,Serie 3,Plata,2019,35000.00
+Mercedes-Benz,Clase C,Azul,2018,38000.00
+Audi,A4,Blanco,2020,40000.00
+Hyundai,Elantra,Gris,2018,19000.00
+Kia,Forte,Amarillo,2019,21000.00
+Nissan,Altima,Blanco,2017,20000.00
+Subaru,Impreza,Azul,2019,23000.00
+Mazda,Mazda3,Plata,2020,24000.00
+Tesla,Model 3,Negro,2021,45000.00
+Fiat,500,Rojo,2018,15000.00
+Marca,Modelo,Color,Año,Precio
+Toyota,Corolla,Blanco,2020,25000.00
+Honda,Civic,Azul,2019,22000.00
+Ford,Focus,Gris,2018,20000.00
+Chevrolet,Cruze,Rojo,2021,26000.00
+Volkswagen,Jetta,Negro,2017,18000.00
+BMW,Serie 3,Plata,2019,35000.00
+Mercedes-Benz,Clase C,Azul,2018,38000.00
+Audi,A4,Blanco,2020,40000.00
+Hyundai,Elantra,Gris,2018,19000.00
+Kia,Forte,Amarillo,2019,21000.00
+Nissan,Altima,Blanco,2017,20000.00
+Subaru,Impreza,Azul,2019,23000.00
+Mazda,Mazda3,Plata,2020,24000.00
+Tesla,Model 3,Negro,2021,45000.00
+Fiat,500,Rojo,2018,15000.00

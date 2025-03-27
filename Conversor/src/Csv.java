@@ -11,47 +11,53 @@ import java.util.List;
 * @author Lucía Fernández Florencio  
 */
 
-public class Csv{
-    private static final String outputCSV = "ficheroCSV.csv";
+abstract class Csv{
+    private static final String ficheroCSV = "ficheroCSV.csv";
+    private static GestorInfo gestorCsv = new GestorInfo();
     
+    public static GestorInfo getGestor() {//Para llamada a gestor desde el main
+        return gestorCsv;
+    }
+
     /**
     * Lee los datos de un archivo .csv y los introduce en una estructura de datos. 
     * 
     * @param ficheroCSV archivo del que se extraen los datos.
+    * @return La instancia de GestorInfo con los datos leídos.
     */
-    public boolean leerCsv(File ficheroCSV) {
-        GestorInfo gestor = new GestorInfo();
-        try (BufferedReader br = new BufferedReader(new FileReader(ficheroCSV))) {
+    public static GestorInfo leerCsv(File ficheroInput) {
+        try (BufferedReader br = new BufferedReader(new FileReader(ficheroInput))) {
             /* REGEX: coma + Lookahead para contar comillas: verifica que, desde ese punto hasta el final de la cadena, el número de comillas dobles sea par.
              * Si la coma está dentro de un campo entrecomillado, esto no se cumple, no se ha de utilizar esta coma para separar.
              * [^\"]* -> Cualquier cantidad (también cero) de caracteres no comillas.
              */
             String [] claves = br.readLine().trim().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-            while(br.readLine() != null){
+            String linea;
+            while((linea = br.readLine()) != null){
                 HashMap <String, String> item = new HashMap<>();
-                String [] valores = br.readLine().trim().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+                String [] valores = linea.trim().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
                 for(int i=0; i<claves.length; i++){
                     item.put(claves[i], valores[i]);
                 }
-                gestor.addItem(item);
+                gestorCsv.addItem(item);
             }
-            return true;
         } catch (IOException e) {
             System.err.println("Error al leer: " + e.getMessage());
-            return false;
-        }
+        } return gestorCsv;
     }
     
     /**
     * Escribe los datos de una lista de HashMaps a un archivo CSV.
     * 
     * @param fichero Lista de HashMaps con los datos a escribir.
+    * @return true si se escribe correctamente; false en caso contrario.
     */
     public static boolean escribirCsv(List<HashMap<String, String>> fichero) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(outputCSV))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(ficheroCSV), true))) {
             String newLine = "";
+            //Implementar comprobación ficheroCSV.length() == 0 and exists.
             // Escribir cabeceras
-            if (!fichero.isEmpty()) {
+            if (!fichero.isEmpty()) { //Escribimos sólo si fichero no está vacío.
                 HashMap<String, String> primeraFila = fichero.get(0);
                 
                 for (String cabecera : primeraFila.keySet()) {
@@ -67,27 +73,26 @@ public class Csv{
                 }
                 bw.write(newLine.substring(0, newLine.length()-1) + "\n");
                 newLine = "";
-            }
-            return true;
+            } return true;
         } catch (IOException e) {
             System.err.println("Error al escribir: " + e.getMessage());
             return false;
         }
-    }
+    } 
 }
     
 
     /*
      * Logica para despues volver a este metodo un auto incremental
      * 
-     * private static final String outputCSV = "ficheroCSV";
+     * private static final String ficheroCSV = "ficheroCSV";
         private static int contador = 1;
 
         este bucle viene ya dntro del metodo
 
         do {
-        outputCSVArchivo = outputCSV + "_" + contador + ".csv";
-        file = new File(outputCSVArchivo);
+        ficheroCSVArchivo = ficheroCSV + "_" + contador + ".csv";
+        file = new File(ficheroCSVArchivo);
         contador++;
     
         } while (file.exists());
