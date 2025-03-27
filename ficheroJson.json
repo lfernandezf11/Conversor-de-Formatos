@@ -1,0 +1,107 @@
+[
+ {
+    "Marca": "Toyota",
+    "Modelo": "Corolla",
+    "Color": "Blanco",
+    "Año": "2020",
+    "Precio": "2500000"
+ },
+ {
+    "Marca": "Honda",
+    "Modelo": "Civic",
+    "Color": "Azul",
+    "Año": "2019",
+    "Precio": "2200000"
+ },
+ {
+    "Marca": "Ford",
+    "Modelo": "Focus",
+    "Color": "Gris",
+    "Año": "2018",
+    "Precio": "2000000"
+ },
+ {
+    "Marca": "Chevrolet",
+    "Modelo": "Cruze",
+    "Color": "Rojo",
+    "Año": "2021",
+    "Precio": "2600000"
+ },
+ {
+    "Marca": "Volkswagen",
+    "Modelo": "Jetta",
+    "Color": "Negro",
+    "Año": "2017",
+    "Precio": "1800000"
+ },
+ {
+    "Marca": "BMW",
+    "Modelo": "Serie 3",
+    "Color": "Plata",
+    "Año": "2019",
+    "Precio": "3500000"
+ },
+ {
+    "Marca": "Mercedes-Benz",
+    "Modelo": "Clase C",
+    "Color": "Azul",
+    "Año": "2018",
+    "Precio": "3800000"
+ },
+ {
+    "Marca": "Audi",
+    "Modelo": "A4",
+    "Color": "Blanco",
+    "Año": "2020",
+    "Precio": "4000000"
+ },
+ {
+    "Marca": "Hyundai",
+    "Modelo": "Elantra",
+    "Color": "Gris",
+    "Año": "2018",
+    "Precio": "1900000"
+ },
+ {
+    "Marca": "Kia",
+    "Modelo": "Forte",
+    "Color": "Amarillo",
+    "Año": "2019",
+    "Precio": "2100000"
+ },
+ {
+    "Marca": "Nissan",
+    "Modelo": "Altima",
+    "Color": "Blanco",
+    "Año": "2017",
+    "Precio": "2000000"
+ },
+ {
+    "Marca": "Subaru",
+    "Modelo": "Impreza",
+    "Color": "Azul",
+    "Año": "2019",
+    "Precio": "2300000"
+ },
+ {
+    "Marca": "Mazda",
+    "Modelo": "Mazda3",
+    "Color": "Plata",
+    "Año": "2020",
+    "Precio": "2400000"
+ },
+ {
+    "Marca": "Tesla",
+    "Modelo": "Model 3",
+    "Color": "Negro",
+    "Año": "2021",
+    "Precio": "4500000"
+ },
+ {
+    "Marca": "Fiat",
+    "Modelo": "500",
+    "Color": "Rojo",
+    "Año": "2018",
+    "Precio": "1500000"
+ }
+]

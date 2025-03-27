@@ -57,16 +57,17 @@ public class mianDePreuba {
         gestor = Csv.getGestor();
         
         System.out.println(gestor.toString());
-        //Csv.escribirCsv(gestor.getItems());*/
+        Csv.escribirCsv(gestor.getItems());*/
+        if(pathJson.exists())
         Json.leerJson(pathJson);
         gestor = Json.getGestor();
 
-        System.out.println(gestor.toString());
+        //System.out.println(gestor.toString());
+        Json.escribirJson(gestor.getItems());
     }
 
 
 
  
 }
-
 
