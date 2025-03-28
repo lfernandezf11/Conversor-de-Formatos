@@ -6,10 +6,8 @@ public class mianDePreuba {
    
     public static File pathCsv = new File("Conversor\\docs\\coches.csv");
     public static File pathJson = new File("Conversor\\docs\\coches.json");
-    public static File pathXmlPrueba = new File("Conversor\\docs\\ficheroXML.xml");
     public static void main(String[] args) {
-
-        HashMap<String, String> fila1 = new HashMap<>();
+        /*HashMap<String, String> fila1 = new HashMap<>();
     fila1.put("nombre", "angel");
     fila1.put("edad", "21");
     fila1.put("Ciudad", "merida");
@@ -52,26 +50,20 @@ public class mianDePreuba {
     gestor.addItem(fila4);
     gestor.addItem(fila5);
     gestor.addItem(fila6);
-    gestor.addItem(fila7);
+    gestor.addItem(fila7);*/
 
 
         /*Csv.leerCsv(pathCsv);
-        gestor = Csv.getGestor();*/
+        gestor = Csv.getGestor();
         
-        /*  System.out.println(gestor.toString());
-        Csv.escribirCsv(gestor.getItems());
-        Xml.escribirXml(gestor.getItems());*/
-
-        /*Json.leerJson(pathJson);
+        System.out.println(gestor.toString());
+        Csv.escribirCsv(gestor.getItems());*/
+        if(pathJson.exists())
+        Json.leerJson(pathJson);
         gestor = Json.getGestor();
 
-
-        System.out.println(gestor.toString());*/
-
-        
-        Xml.leerXml(pathXmlPrueba);
-        gestor = Xml.getGestor();
-        Csv.escribirCsv(gestor.getItems());
+        //System.out.println(gestor.toString());
+        Json.escribirJson(gestor.getItems());
     }
 
 
