@@ -47,6 +47,7 @@ abstract class Csv{
     }
     
     /**
+     *
     * Escribe los datos de una lista de HashMaps a un archivo CSV.
     * 
     * @param fichero Lista de HashMaps con los datos a escribir.
@@ -66,7 +67,6 @@ abstract class Csv{
                 bw.write(newLine.substring(0, newLine.length()-1) + "\n");
                 newLine = "";
             } 
-           
             for (HashMap<String, String> fila : fichero) {
                 for (String valor : fila.values()) {
                     newLine += valor + ",";

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elementos>
+  <elemento>
+    <Ciudad>merida</Ciudad>
+    <nombre>angel</nombre>
+    <edad>21</edad>
+  </elemento>
+  <elemento>
+    <Edad>29</Edad>
+    <ciudad>los angeles</ciudad>
+    <nombre>lucia</nombre>
+  </elemento>
+  <elemento>
+    <ciudad>Madrid</ciudad>
+    <nombre>Carlos</nombre>
+    <edad>35</edad>
+  </elemento>
+  <elemento>
+    <ciudad>Barcelona</ciudad>
+    <nombre>María</nombre>
+    <edad>28</edad>
+  </elemento>
+  <elemento>
+    <ciudad>Valencia</ciudad>
+    <nombre>Pedro</nombre>
+    <edad>40</edad>
+  </elemento>
+  <elemento>
+    <ciudad>Sevilla</ciudad>
+    <nombre>Ana</nombre>
+    <edad>32</edad>
+  </elemento>
+  <elemento>
+    <ciudad>Bilbao</ciudad>
+    <nombre>Luis</nombre>
+    <edad>27</edad>
+  </elemento>
+</elementos>
