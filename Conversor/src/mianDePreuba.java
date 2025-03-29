@@ -1,13 +1,30 @@
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
+
 
 public class mianDePreuba {
     public static GestorInfo gestor = new GestorInfo();
    
-    public static File pathCsv = new File("Conversor\\docs\\coches.csv");
-    public static File pathJson = new File("Conversor\\docs\\coches.json");
+    public static File pathCsv = new File("docs\\coches.csv");
+    public static File pathJson = new File("docs\\coches.json");
+    public static File pathXml = new File("docs\\coches.xml");
     public static void main(String[] args) {
-        /*HashMap<String, String> fila1 = new HashMap<>();
+
+
+                
+                Xml.leerXml(pathXml);
+                Xml.escribirXml(Xml.getGestor().getItems()); 
+
+                Csv.leerCsv(pathCsv);
+                Csv.escribirCsv(Csv.getGestor().getItems());
+
+                Json.leerJson(pathJson);
+                Json.escribirJson(Json.getGestor().getItems());
+
+                
+
+    /*HashMap<String, String> fila1 = new HashMap<>();
     fila1.put("nombre", "angel");
     fila1.put("edad", "21");
     fila1.put("Ciudad", "merida");
@@ -57,13 +74,67 @@ public class mianDePreuba {
         gestor = Csv.getGestor();
         
         System.out.println(gestor.toString());
-        Csv.escribirCsv(gestor.getItems());*/
-        if(pathJson.exists())
-        Json.leerJson(pathJson);
-        gestor = Json.getGestor();
+        Csv.escribirCsv(gestor.getItems());
+        
+        
+        if(pathXml.exists())
+        xmlPruena.leerXml(pathXml);
+        gestor = xmlPruena.getGestor();
 
-        //System.out.println(gestor.toString());
-        Json.escribirJson(gestor.getItems());
+        System.out.println(gestor.toString());
+        Xml.escribirXml(gestor.getItems());
+
+        /*if (pathXml.exists()) {
+            System.out.println("Archivo encontrado: " + pathXml.getAbsolutePath());
+            Xml.leerXml(pathXml);
+            gestor = Xml.getGestor();
+        
+            // Verificar si hay datos después de leer
+            System.out.println("Datos leídos del XML: " + gestor.getItems());
+        
+            // Escribir solo si hay datos
+            if (!gestor.getItems().isEmpty()) {
+                Xml.escribirXml(gestor.getItems());
+                System.out.println("Se ha escrito el XML correctamente.");
+            } else {
+                System.out.println("No hay datos para escribir.");
+            }
+        } else {
+            System.out.println("El archivo XML no existe: " + pathXml.getAbsolutePath());
+        }*/
+        
+        /*Xml.leerXml(pathXml);
+        gestor = Xml.getGestor();
+        
+        System.out.println(gestor.toString());
+        Xml.escribirXml(gestor.getItems());
+
+        /*File ficheroInput = new File("docs\\coches.xml");
+        List<HashMap<String, String>> resultado = Xml.leerXml(ficheroInput);
+
+        // Imprimir el resultado
+        for (HashMap<String, String> item : resultado) {
+            System.out.println(item);
+        }*/
+
+        /*File xmlFile = new File("docs\\coches.xml");
+        List<HashMap<String, String>> items = Xml.leerXml(xmlFile);
+        
+        if (!Xml.escribirXml(items)) {
+            System.out.println("no sirve");
+            
+        }else{
+            System.out.println("si sirve");
+        }
+        
+        // Imprimir los resultados
+        for (HashMap<String, String> item : items) {
+            System.out.println(item);
+        }*/
+        /*xmlPruena.leerXml(pathXml);
+        System.out.println(gestor.toString());
+
+        /*Xml.escribirXml(gestor.getItems());*/
     }
 
 

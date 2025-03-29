@@ -6,92 +6,86 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class Xml {
+/**
+* @author Angel Andres Villorina  
+*/
+
+abstract class Xml {
     
-    private static final String ficheroXML = "ficheroXML.xml";
+    private static final String ficheroXml = "ficheroXml.xml";
     private static GestorInfo gestorXml = new GestorInfo();
 
-    public static GestorInfo getGestor() {//Para llamada a gestor desde el main de prueba
+    public static GestorInfo getGestor() { // Para llamada a gestor desde el main
         return gestorXml;
     }
 
+    /**
+     * Lee los datos de un archivo .xml y los introduce en una estructura de datos.
+     *
+     * @param ficheroInput archivo del que se extraen los datos.
+     * @return La instancia de GestorInfo estático de la clase con los datos leídos.
+     */
     public static GestorInfo leerXml(File ficheroInput) {
-        GestorInfo gestorXml = new GestorInfo();
         try (BufferedReader br = new BufferedReader(new FileReader(ficheroInput))) {
             String linea;
-            HashMap<String, String> item = null;
+            HashMap<String, String> elemento = null;
+            String key = null;
+            boolean dentroDeElemento = false; // Para rastrear si estamos dentro de un bloque <...> (ej: <coche>)
+            
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
-                if (linea.startsWith("<elemento>")) {
-                    item = new HashMap<>();
-                } else if (linea.startsWith("</elemento>")) {
-                    if (item != null && !item.isEmpty()) {
-                        gestorXml.addItem(item);
-                    }
-                    item = null;
-                } else if (item != null && linea.startsWith("<") && linea.endsWith(">")) {
-                    int inicioEtiqueta = linea.indexOf("<") + 1;
-                    int finEtiqueta = linea.indexOf(">");
-                    int inicioEtiquetaCierre = linea.lastIndexOf("</") + 2;
-                    
-                    if (inicioEtiqueta < finEtiqueta && finEtiqueta < inicioEtiquetaCierre) {
-                        String clave = linea.substring(inicioEtiqueta, finEtiqueta);
-                        String valor = linea.substring(finEtiqueta + 1, inicioEtiquetaCierre - 1);
-                        item.put(clave, valor);
-                    }
-                    
+
+                if (linea.isEmpty() || linea.startsWith("<?xml") || 
+                    (linea.startsWith("<") && linea.endsWith(">") && !linea.contains("</"))) {
+                    continue;
+                }
+                
+                if (linea.startsWith("<") && !linea.startsWith("</") && !dentroDeElemento) {
+                    elemento = new HashMap<>();
+                    dentroDeElemento = true;
+                } 
+
+                else if (linea.startsWith("</") && dentroDeElemento) {
+                    gestorXml.addItem(elemento);
+                    elemento = null;
+                    dentroDeElemento = false;
+                } 
+
+                else if (dentroDeElemento && linea.startsWith("<") && linea.contains("</")) {
+                    key = linea.substring(1, linea.indexOf(">"));
+                    String valor = linea.substring(linea.indexOf(">") + 1, linea.indexOf("</"));
+                    elemento.put(key, valor);
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error al leer XML: " + e.getMessage());
-        }return gestorXml;
-        
-    }
-
-
-
-
-    public static boolean escribirXml(List<HashMap<String, String>> fichero) {
-        if (fichero.isEmpty()) {
-            
-            return false;
+            System.err.println("Error al leer: " + e.getMessage());
         }
-    
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroXML))) {
-            bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-            bw.newLine();
-            
-            // Abrir el elemento raíz
-            bw.write("<elementos>");
-            bw.newLine();
-            
-            for (HashMap<String, String> fila : fichero) {
-                bw.write("  <elemento>");
-                bw.newLine();
-                
-                for (Map.Entry<String, String> entry : fila.entrySet()) {
-                    String clave = entry.getKey();
-                    String valor = entry.getValue();
-                    bw.write("    <" + clave + ">" + valor + "</" + clave + ">");
-                    bw.newLine();
+        return gestorXml;
+    }
+    /**
+     * Escribe los datos de una lista de HashMaps a un archivo XML.
+     *
+     * @param fichero Lista de HashMaps con los datos a escribir.
+     * @return true si se escribe correctamente; false en caso contrario.
+     */
+    public static boolean escribirXml(List<HashMap<String, String>> fichero) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(ficheroXml), true))) {
+            bw.write("<elemento>\n");
+            for (HashMap<String, String> elemento : fichero) {
+                bw.write("  <elemento>\n");
+                for (String key : elemento.keySet()) {
+                    bw.write("    <" + key + ">" + elemento.get(key) + "</" + key + ">\n");
                 }
-                
-                bw.write("  </elemento>");
-                bw.newLine();
+                bw.write("  </elemento>\n");
             }
-            
-            // Cerrar el elemento raíz
-            bw.write("</elementos>");
-            
+            bw.write("</elementos>\n");
             return true;
         } catch (IOException e) {
             System.err.println("Error al escribir: " + e.getMessage());
             return false;
         }
     }
-    
 
 
 }
