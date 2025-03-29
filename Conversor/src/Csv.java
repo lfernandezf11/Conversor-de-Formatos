@@ -53,8 +53,8 @@ abstract class Csv{
     * @param fichero Lista de HashMaps con los datos a escribir.
     * @return true si se escribe correctamente; false en caso contrario.
     */
-    public static boolean escribirCsv(List<HashMap<String, String>> fichero) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(ficheroCSV), true))) {
+    public static boolean escribirCsv(List<HashMap<String, String>> fichero, File archivoSalida) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida))) {
             String newLine = "";
             //Implementar comprobación ficheroCSV.length() == 0 and exists.
             // Escribir cabeceras

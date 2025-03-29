@@ -9,6 +9,8 @@ public class App {
     static File carpeta = null; 
     static File ficheroSeleccionado = null; 
     static String contenidoFichero = ""; 
+    static GestorInfo gestorActual = null;
+
 
     public static void main(String[] args) throws Exception {
         int opcion;
@@ -55,26 +57,29 @@ public class App {
             System.out.println("\n-------------------- MENÚ  --------------------");
             MostrarEstadoActual(); 
             System.out.println("\n\n1. Seleccionar fichero");
-            System.out.println("2. Lectura de fichero");
-            System.out.println("3. Volver al menú anterior");
-            System.out.println("4. Salir");
+            System.out.println("2. Leer fichero seleccionado (requiere seleccionar fichero)");
+            System.out.println("3. Convertir fichero (requiere lectura previa)");
+            System.out.println("4. Volver al menú anterior");
+            System.out.println("5. Salir");
             System.out.print("Elija una opción: ");
             opcion = sc.nextInt();
-
+    
             switch (opcion) {
                 case 1 -> SeleccionarFichero();
                 case 2 -> LeerFichero();
-                case 3 -> System.out.println("Volviendo al menú anterior...");
-                case 4 -> System.exit(0);
+                case 3 -> {
+                    if (gestorActual != null && !gestorActual.getItems().isEmpty()) {
+                        Menu3();
+                    } else {
+                        System.out.println("\nPrimero debes leer un fichero válido.");
+                    }
+                }
+                case 4 -> System.out.println("Volviendo al menú anterior...");
+                case 5 -> System.exit(0);
                 default -> System.out.println("Opción no válida.");
             }
-
-            if (ficheroSeleccionado != null && opcion == 1) {
-                Menu3(); 
-            }
-        } while (opcion != 3);
+        } while (opcion != 4);
     }
-
     public static void SeleccionarFichero() {
         if (carpeta == null) {
             System.out.println("\nPrimero debes seleccionar una carpeta en el Menú 1.");
@@ -98,22 +103,41 @@ public class App {
     }
 
     public static void LeerFichero() {
+        sc.nextLine();
         if (ficheroSeleccionado == null) {
             System.out.println("\nPrimero debes seleccionar un fichero en el Menú 2.");
             return;
         }
-
-        contenidoFichero = ""; // Reiniciar contenido de antes
-
-        try (Scanner lectorFichero = new Scanner(ficheroSeleccionado)) {
-            while (lectorFichero.hasNextLine()) {
-                contenidoFichero += lectorFichero.nextLine() + "\n";
-            }
-            System.out.println("\nFichero leido correctamente.");
-        } catch (IOException e) {
-            System.out.println("\nError al leer el fichero: " + e.getMessage());
+    
+        gestorActual = null;
+        String nombre = ficheroSeleccionado.getName();
+        String extension = nombre.substring(nombre.lastIndexOf('.') + 1).toLowerCase();
+    
+        switch (extension) {
+            case "csv" -> {
+                Csv.leerCsv(ficheroSeleccionado);
+                gestorActual = Csv.getGestor();}
+                
+            case "xml" -> {
+                Xml.leerXml(ficheroSeleccionado);
+                gestorActual = Xml.getGestor();}
+                
+            case "json" -> {
+                Json.leerJson(ficheroSeleccionado);
+                gestorActual = Json.getGestor();}
+                
+            default ->
+                {System.out.println("\nFormato no soportado: " + extension);}
+                
+        }
+    
+        if (gestorActual != null && !gestorActual.getItems().isEmpty()) {
+            System.out.println("\nDatos del fichero leidos y cargados correctamente en memoria");
+        } else {
+            System.out.println("\nError al cargar los datos");
         }
     }
+    
 
     public static void Menu3() {
         int opcion;
@@ -138,28 +162,37 @@ public class App {
     }
 
     public static void ConvertirFormato(String formato) {
-        if (contenidoFichero.isEmpty()) {
-            System.out.println("\nPrimero debes leer un fichero en el Menú 2.");
+        if (gestorActual == null || gestorActual.getItems().isEmpty()) {
+            System.out.println("\nPrimero debes leer un fichero válido");
             return;
         }
-
-        sc.nextLine(); // Limpiar el puto buffer
-        System.out.print("\nIntroduce el nombre del archivo de salida (sin extensión): ");
+    
+        sc.nextLine();
+        System.out.print("\nNombre del archivo de salida (sin extensión): ");
         String nombreSalida = sc.nextLine();
-
+    
         File archivoSalida = new File(carpeta, nombreSalida + "." + formato);
-
-        try {
-            if (archivoSalida.createNewFile()) {
-                java.nio.file.Files.writeString(archivoSalida.toPath(), contenidoFichero);
-                System.out.println("\nArchivo convertido y guardado como: " + archivoSalida.getAbsolutePath());
-            } else {
-                System.out.println("\nNo se pudo crear el archivo de salida.");
-            }
-        } catch (IOException e) {
-            System.out.println("\nError al crear el archivo: " + e.getMessage());
+        boolean exito = false;
+    
+        switch (formato.toLowerCase()) {
+            case "csv":
+                exito = Csv.escribirCsv(gestorActual.getItems(), archivoSalida);
+                break;
+            case "json":
+                exito = Json.escribirJson(gestorActual.getItems(), archivoSalida);
+                break;
+            case "xml":
+                exito = Xml.escribirXml(gestorActual.getItems(), archivoSalida);
+                break;
+        }
+    
+        if (exito) {
+            System.out.println("\nConversión exitosa: " + archivoSalida.getAbsolutePath());
+        } else {
+            System.out.println("\nError en la conversión");
         }
     }
+    
 
 
     public static void MostrarEstadoActual() {

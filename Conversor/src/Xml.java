@@ -70,8 +70,8 @@ abstract class Xml {
      * @param fichero Lista de HashMaps con los datos a escribir.
      * @return true si se escribe correctamente; false en caso contrario.
      */
-    public static boolean escribirXml(List<HashMap<String, String>> fichero) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(ficheroXml), true))) {
+    public static boolean escribirXml(List<HashMap<String, String>> fichero, File archivoSalida) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida))) {
             bw.write("<elemento>\n");
             for (HashMap<String, String> elemento : fichero) {
                 bw.write("  <elemento>\n");
