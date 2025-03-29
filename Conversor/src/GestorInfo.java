@@ -77,6 +77,15 @@ public String toString(){
     }
     return arrayString;
     }
+
+    /**
+     * Limpia todos los items almacenados en el gestor.
+     * esto lo usaremos en los case de switch, al final de cada 
+     * escritura, para poder asegurarnos de que no nunca este lleno
+     */
+    public void clear() {
+        items.clear();  // Vacía la lista de items
+    }
 }
 
 

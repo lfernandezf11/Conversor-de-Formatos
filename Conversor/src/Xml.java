@@ -15,7 +15,7 @@ abstract class Xml {
     
     private static final String ficheroXml = "ficheroXml.xml";
     private static GestorInfo gestorXml = new GestorInfo();
-
+    
     public static GestorInfo getGestor() { // Para llamada a gestor desde el main
         return gestorXml;
     }
@@ -31,31 +31,31 @@ abstract class Xml {
             String linea;
             HashMap<String, String> elemento = null;
             String key = null;
-            boolean dentroDeElemento = false; // Para rastrear si estamos dentro de un bloque <...> (ej: <coche>)
+            boolean dentroDeElemento = false; // Una bandera para saber si estamos dentro de  <...> o no
             
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
-
-                if (linea.isEmpty() || linea.startsWith("<?xml") || 
-                    (linea.startsWith("<") && linea.endsWith(">") && !linea.contains("</"))) {
-                    continue;
-                }
-                
-                if (linea.startsWith("<") && !linea.startsWith("</") && !dentroDeElemento) {
-                    elemento = new HashMap<>();
-                    dentroDeElemento = true;
-                } 
-
-                else if (linea.startsWith("</") && dentroDeElemento) {
-                    gestorXml.addItem(elemento);
-                    elemento = null;
-                    dentroDeElemento = false;
-                } 
-
-                else if (dentroDeElemento && linea.startsWith("<") && linea.contains("</")) {
-                    key = linea.substring(1, linea.indexOf(">"));
-                    String valor = linea.substring(linea.indexOf(">") + 1, linea.indexOf("</"));
-                    elemento.put(key, valor);
+    
+                if (!linea.isEmpty() && 
+                    !linea.startsWith("<?xml") && 
+                    !(linea.startsWith("<") && linea.endsWith(">") && !linea.contains("</"))) {
+    
+                    if (linea.startsWith("<") && !linea.startsWith("</") && !dentroDeElemento) {
+                        elemento = new HashMap<>();
+                        dentroDeElemento = true;
+                    } 
+    
+                    else if (linea.startsWith("</") && dentroDeElemento) {
+                        gestorXml.addItem(elemento);
+                        elemento = null;
+                        dentroDeElemento = false;
+                    } 
+    
+                    else if (dentroDeElemento && linea.startsWith("<") && linea.contains("</")) {
+                        key = linea.substring(1, linea.indexOf(">"));
+                        String valor = linea.substring(linea.indexOf(">") + 1, linea.indexOf("</"));
+                        elemento.put(key, valor);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -63,6 +63,7 @@ abstract class Xml {
         }
         return gestorXml;
     }
+    
     /**
      * Escribe los datos de una lista de HashMaps a un archivo XML.
      *
