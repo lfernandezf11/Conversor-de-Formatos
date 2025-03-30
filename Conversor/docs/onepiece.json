@@ -1,0 +1,58 @@
+[
+  {
+    "Nombre": "Monkey D. Luffy",
+    "Recompensa": "3",
+    "Tripulacion": "000",
+    "Fruta": "000",
+    "Rol": "000 Berries"
+  },
+  {
+    "Nombre": "Roronoa Zoro",
+    "Recompensa": "1",
+    "Tripulacion": "111",
+    "Fruta": "000",
+    "Rol": "000 Berries"
+  },
+  {
+    "Nombre": "Sanji",
+    "Recompensa": "1",
+    "Tripulacion": "032",
+    "Fruta": "000",
+    "Rol": "000 Berries"
+  },
+  {
+    "Nombre": "Trafalgar D. Water Law",
+    "Recompensa": "3",
+    "Tripulacion": "000",
+    "Fruta": "000",
+    "Rol": "000 Berries"
+  },
+  {
+    "Nombre": "Shanks",
+    "Recompensa": "4",
+    "Tripulacion": "048",
+    "Fruta": "900",
+    "Rol": "000 Berries"
+  },
+  {
+    "Nombre": "Blackbeard (Marshall D. Teach)",
+    "Recompensa": "3",
+    "Tripulacion": "996",
+    "Fruta": "000",
+    "Rol": "000 Berries"
+  },
+  {
+    "Nombre": "Boa Hancock",
+    "Recompensa": "1",
+    "Tripulacion": "659",
+    "Fruta": "000",
+    "Rol": "000 Berries"
+  },
+  {
+    "Nombre": "Eustass Kid",
+    "Recompensa": "3",
+    "Tripulacion": "000",
+    "Fruta": "000",
+    "Rol": "000 Berries"
+  }
+]

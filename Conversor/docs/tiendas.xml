@@ -1,0 +1,71 @@
+<elementos>
+  <elemento>
+    <cuota anual de inscripción>20</cuota anual de inscripción>
+    <tamaño>Grande</tamaño>
+    <dirección>Av de los Comics 101 Madrid</dirección>
+    <nombre del último premio concedido>Premio Innovación Cómica</nombre del último premio concedido>
+    <nombre>Comic Universe</nombre>
+    <número de socios>150</número de socios>
+    <año de fundación>1998</año de fundación>
+  </elemento>
+  <elemento>
+    <cuota anual de inscripción>18</cuota anual de inscripción>
+    <tamaño>Mediano</tamaño>
+    <dirección>Calle de la Imaginación 45 Barcelona</dirección>
+    <nombre del último premio concedido>Premio al Mejor Servicio</nombre del último premio concedido>
+    <nombre>Mundo del Cómic</nombre>
+    <número de socios>95</número de socios>
+    <año de fundación>2005</año de fundación>
+  </elemento>
+  <elemento>
+    <cuota anual de inscripción>25</cuota anual de inscripción>
+    <tamaño>Grande</tamaño>
+    <dirección>Paseo de la Justicia 78 Valencia</dirección>
+    <nombre del último premio concedido>Premio Comic Classic</nombre del último premio concedido>
+    <nombre>La Guarida del Superhéroe</nombre>
+    <número de socios>120</número de socios>
+    <año de fundación>1990</año de fundación>
+  </elemento>
+  <elemento>
+    <cuota anual de inscripción>15</cuota anual de inscripción>
+    <tamaño>Pequeño</tamaño>
+    <dirección>Calle Ficticia 12 Sevilla</dirección>
+    <nombre del último premio concedido>Premio Calidad Cómica</nombre del último premio concedido>
+    <nombre>Comic Planet</nombre>
+    <número de socios>80</número de socios>
+    <año de fundación>2010</año de fundación>
+  </elemento>
+  <elemento>
+    <cuota anual de inscripción>22</cuota anual de inscripción>
+    <tamaño>Mediano</tamaño>
+    <dirección>Avenida de los Dibujos 33 Bilbao</dirección>
+    <nombre del último premio concedido>Premio Diseño Innovador</nombre del último premio concedido>
+    <nombre>Fábrica de Cómics</nombre>
+    <número de socios>110</número de socios>
+    <año de fundación>1985</año de fundación>
+  </elemento>
+  <elemento>
+    <cuota anual de inscripción>12</cuota anual de inscripción>
+    <tamaño>Pequeño</tamaño>
+    <dirección>Calle del Arte 50 Zaragoza</dirección>
+    <nombre del último premio concedido>Premio al Emprendedor Cómico</nombre del último premio concedido>
+    <nombre>El Rincón del Cómic</nombre>
+    <número de socios>65</número de socios>
+    <año de fundación>2015</año de fundación>
+  </elemento>
+  <elemento>
+    <cuota anual de inscripción>30</cuota anual de inscripción>
+    <tamaño>Grande</tamaño>
+    <dirección>Plaza de los Héroes 20 Madrid</dirección>
+    <nombre del último premio concedido>Premio a la Excelencia Cómica</nombre del último premio concedido>
+    <nombre>Comic Lovers</nombre>
+    <número de socios>200</número de socios>
+    <año de fundación>2000</año de fundación>
+  </elemento>
+  <elemento>
+    <dirección>Calle de la Fantasía 77 Valencia</dirección>
+    <nombre>Super Cómics</nombre>
+    <número de socios>90</número de socios>
+    <año de fundación>1995</año de fundación>
+  </elemento>
+</elementos>
