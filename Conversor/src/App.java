@@ -200,7 +200,7 @@ public class App {
         String rutaCarpetaSeleccionada = ruta.isEmpty() ? "" : ruta;
         String ficheroSeleccionadoNombre = (ficheroSeleccionado == null) ? "" : ficheroSeleccionado.getName();
     
-        System.out.println("\nEstado actual:");
+        System.out.println("\n-- ESTADO ACTUAL --");
         System.out.println("Ruta de la carpeta seleccionada: " + rutaCarpetaSeleccionada);
         System.out.println("Fichero seleccionado: " + ficheroSeleccionadoNombre);
         System.out.println("Contenido de la carpeta seleccionada:");

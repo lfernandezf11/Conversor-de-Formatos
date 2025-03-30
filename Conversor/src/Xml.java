@@ -12,8 +12,6 @@ import java.util.List;
 */
 
 abstract class Xml {
-    
-    private static final String ficheroXml = "ficheroXml.xml";
     private static GestorInfo gestorXml = new GestorInfo();
     
     public static GestorInfo getGestor() { // Para llamada a gestor desde el main
@@ -31,31 +29,30 @@ abstract class Xml {
             String linea;
             HashMap<String, String> elemento = null;
             String key = null;
+            String valor = null;
             boolean dentroDeElemento = false; // Una bandera para saber si estamos dentro de  <...> o no
             
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
-    
-                if (!linea.isEmpty() && 
-                    !linea.startsWith("<?xml") && 
-                    !(linea.startsWith("<") && linea.endsWith(">") && !linea.contains("</"))) {
-    
-                    if (linea.startsWith("<") && !linea.startsWith("</") && !dentroDeElemento) {
-                        elemento = new HashMap<>();
+                //Trabajamos con las líneas que no están vacías y no son la de inicio de un documento xml
+                if (!linea.isEmpty() && !linea.startsWith("<?xml")) { 
+                    // Línea de apertura: empieza por < y no contiene </. Descarta líneas de pares clave-valor y línea de cierre.   
+                    if (linea.startsWith("<") && !linea.contains("</") && !dentroDeElemento) {
+                        elemento = new HashMap<>(); //Inicia la estructura de datos.
                         dentroDeElemento = true;
                     } 
-    
-                    else if (linea.startsWith("</") && dentroDeElemento) {
-                        gestorXml.addItem(elemento);
-                        elemento = null;
-                        dentroDeElemento = false;
-                    } 
-    
+                    // Línea de par clave-valor. Empieza por < y contiene </. Descarta línea de cierre porque no empieza por </.
                     else if (dentroDeElemento && linea.startsWith("<") && linea.contains("</")) {
                         key = linea.substring(1, linea.indexOf(">"));
-                        String valor = linea.substring(linea.indexOf(">") + 1, linea.indexOf("</"));
+                        valor = linea.substring(linea.indexOf(">") + 1, linea.indexOf("</"));
                         elemento.put(key, valor);
                     }
+                    // Línea de cierre revierte la bandera y reinicia los valores después de añadir el elemento al gestor.
+                    else if (linea.startsWith("</") && dentroDeElemento) {
+                        gestorXml.addItem(elemento);
+                        elemento = null; key = null; valor = null;
+                        dentroDeElemento = false;
+                    }  
                 }
             }
         } catch (IOException e) {
@@ -70,10 +67,10 @@ abstract class Xml {
      * @param fichero Lista de HashMaps con los datos a escribir.
      * @return true si se escribe correctamente; false en caso contrario.
      */
-    public static boolean escribirXml(List<HashMap<String, String>> fichero, File archivoSalida) {
+    public static boolean escribirXml(List<HashMap<String, String>> estDatos, File archivoSalida) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida))) {
-            bw.write("<elemento>\n");
-            for (HashMap<String, String> elemento : fichero) {
+            bw.write("<elementos>\n");
+            for (HashMap<String, String> elemento : estDatos) {
                 bw.write("  <elemento>\n");
                 for (String key : elemento.keySet()) {
                     bw.write("    <" + key + ">" + elemento.get(key) + "</" + key + ">\n");

@@ -12,7 +12,6 @@ import java.util.List;
 */
 
 abstract class Csv{
-    private static final String ficheroCSV = "ficheroCSV.csv";
     private static GestorInfo gestorCsv = new GestorInfo();
     
     public static GestorInfo getGestor() {//Para llamada a gestor desde el main
@@ -50,16 +49,16 @@ abstract class Csv{
      *
     * Escribe los datos de una lista de HashMaps a un archivo CSV.
     * 
-    * @param fichero Lista de HashMaps con los datos a escribir.
+    * @param estDatos Lista de HashMaps con los datos a escribir.
     * @return true si se escribe correctamente; false en caso contrario.
     */
-    public static boolean escribirCsv(List<HashMap<String, String>> fichero, File archivoSalida) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida))) {
+    public static boolean escribirCsv(List<HashMap<String, String>> estDatos, File ficheroOutput) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroOutput))) {
             String newLine = "";
             //Implementar comprobación ficheroCSV.length() == 0 and exists.
             // Escribir cabeceras
-            if (!fichero.isEmpty()) { //Escribimos sólo si fichero no está vacío.
-                HashMap<String, String> primeraFila = fichero.get(0);
+            if (!estDatos.isEmpty()) { //Escribimos sólo si fichero no está vacío.
+                HashMap<String, String> primeraFila = estDatos.get(0);
                 
                 for (String cabecera : primeraFila.keySet()) {
                     newLine += cabecera + ",";
@@ -67,7 +66,7 @@ abstract class Csv{
                 bw.write(newLine.substring(0, newLine.length()-1) + "\n");
                 newLine = "";
             } 
-            for (HashMap<String, String> fila : fichero) {
+            for (HashMap<String, String> fila : estDatos) {
                 for (String valor : fila.values()) {
                     newLine += valor + ",";
                 }

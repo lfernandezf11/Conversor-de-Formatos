@@ -11,7 +11,6 @@ import java.util.List;
 */
 
 abstract class Json{
-    private static final String ficheroJson = "ficheroJson.json";
     private static GestorInfo gestorJson = new GestorInfo();
     
     public static GestorInfo getGestor() {//Para llamada a gestor desde el main
@@ -49,16 +48,16 @@ abstract class Json{
     /**
     * Escribe los datos de una lista de HashMaps a un archivo JSON.
     * 
-    * @param fichero Lista de HashMaps con los datos a escribir.
+    * @param estDatos Lista de HashMaps con los datos a escribir.
     * @return true si se escribe correctamente; false en caso contrario.
     */
-    public static boolean escribirJson(List<HashMap<String, String>> fichero, File archivoSalida) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida))) {
+    public static boolean escribirJson(List<HashMap<String, String>> estDatos, File ficheroOutput) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroOutput))) {
             bw.write("[\n");
-            if (!fichero.isEmpty()) { //Escribimos sólo si fichero no está vacío.
-                for(int i=0; i<fichero.size(); i++){
+            if (!estDatos.isEmpty()) { //Escribimos sólo si fichero no está vacío.
+                for(int i=0; i<estDatos.size(); i++){
                     bw.write(" {\n");
-                    HashMap<String, String> elemento = fichero.get(i);
+                    HashMap<String, String> elemento = estDatos.get(i);
                     int contador = 0;
                     for(String par : elemento.keySet()){
                         bw.write("    \"" + par + "\": \"" + elemento.get(par) + "\"");
@@ -69,7 +68,7 @@ abstract class Json{
                             bw.write(",\n");
                         }
                     }
-                    if(i == fichero.size()-1){
+                    if(i == estDatos.size()-1){
                         bw.write("\n]");
                     }else{
                         bw.write(",\n");
@@ -82,9 +81,8 @@ abstract class Json{
             return false;
         }
     }
-        
 
-        }
+}
 
 
     
