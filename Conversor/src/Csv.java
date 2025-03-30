@@ -81,21 +81,7 @@ abstract class Csv{
 }
     
 
-    /*
-     * Logica para despues volver a este metodo un auto incremental
-     * 
-     * private static final String ficheroCSV = "ficheroCSV";
-        private static int contador = 1;
-
-        este bucle viene ya dntro del metodo
-
-        do {
-        ficheroCSVArchivo = ficheroCSV + "_" + contador + ".csv";
-        file = new File(ficheroCSVArchivo);
-        contador++;
-    
-        } while (file.exists());
-     */
+   
 
 
 

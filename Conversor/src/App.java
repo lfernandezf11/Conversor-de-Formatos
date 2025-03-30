@@ -1,6 +1,10 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
+/**
+ * @author Ángel Andrés Villorina
+ * @author Lucía Fernández Florencio
+ * @version 1.0
+ */
 
 public class App {
 
@@ -15,122 +19,130 @@ public class App {
     public static void main(String[] args) throws Exception {
         int opcion;
         do {
-            opcion = Menu1();
+            opcion = menu1();
             switch (opcion) {
-                case 1 -> SeleccionarCarpeta();
+                case 1 -> seleccionarCarpeta();
                 case 2 -> System.out.println("Saliendo del programa...");
                 default -> System.out.println("Opción no válida.");
             }
 
             if (carpeta != null && opcion != 2) {
-                Menu2(); 
+                menu2(); 
+            } else{
+                System.out.println("\nPrimero debes elegir una carpeta válida.");
             }
         } while (opcion != 2);
     }
 
-    public static int Menu1() {
+    public static int menu1() {
         System.out.println("\n-------------------- MENÚ  --------------------");
-        MostrarEstadoActual(); 
+        mostrarEstadoActual(); 
         System.out.println("\n\n1. Seleccionar carpeta");
         System.out.println("2. Salir");
         System.out.print("Elija una opción: ");
-        return sc.nextInt();
+        return Integer.parseInt(sc.nextLine());
     }
 
-    public static void SeleccionarCarpeta() {
+    public static void seleccionarCarpeta() {
         sc.nextLine(); // Limpiar buffer
         System.out.print("\nIntroduce la ruta de la carpeta: ");
         ruta = sc.nextLine();
-
-        carpeta = new File(ruta);
-        if (carpeta.exists() && carpeta.isDirectory()) {
-            System.out.println("\nLa carpeta '" + ruta + "' existe y es válida.\n");
-        } else {
-            System.out.println("\nLa ruta especificada no existe o no es una carpeta válida.\n");
-            carpeta = null; // Reiniciar para evitar problemas :(
+        
+        try {
+            carpeta = new File(ruta);
+            if (carpeta.exists() && carpeta.isDirectory()) {
+                System.out.println("\nLa carpeta '" + ruta + "' existe y es válida.\n");
+            } else {
+                System.out.println("\nLa ruta especificada no existe o no es una carpeta válida.\n");
+                carpeta = null; // Reiniciar para evitar problemas :(
+            }
+        } catch (Exception e) {
+            System.err.println("Error en la búsqueda del directorio: " + e.getMessage());
         }
     }
 
-    public static void Menu2() {
+    public static void menu2() {
         int opcion;
         do {
             System.out.println("\n-------------------- MENÚ  --------------------");
-            MostrarEstadoActual(); 
-            System.out.println("\n\n1. Seleccionar fichero");
-            System.out.println("2. Leer fichero seleccionado (requiere seleccionar fichero)");
-            System.out.println("3. Convertir fichero (requiere lectura previa)");
-            System.out.println("4. Volver al menú anterior");
-            System.out.println("5. Salir");
+            mostrarEstadoActual(); 
+            System.out.println("\n\n 1. Leer un fichero dentro de la carpeta especificada.");
+            System.out.println("2. Seleccionar otra carpeta.");
+            System.out.println("3. Volver al menú anterior");
+            System.out.println("4. Salir");
             System.out.print("Elija una opción: ");
-            opcion = sc.nextInt();
+            opcion = Integer.parseInt(sc.nextLine());
     
             switch (opcion) {
-                case 1 -> SeleccionarFichero();
-                case 2 -> LeerFichero();
-                case 3 -> {
-                    if (gestorActual != null && !gestorActual.getItems().isEmpty()) {
-                        Menu3();
-                    } else {
-                        System.out.println("\nPrimero debes leer un fichero válido.");
-                    }
-                }
-                case 4 -> System.out.println("Volviendo al menú anterior...");
-                case 5 -> System.exit(0);
+                case 1 -> seleccionarFichero();
+                case 2 -> seleccionarCarpeta();
+                case 3 -> System.out.println("Volviendo al menú anterior...");
+                case 4 -> System.exit(0);
                 default -> System.out.println("Opción no válida.");
             }
-        } while (opcion != 4);
+            if (ficheroSeleccionado != null && opcion != 3) {
+                menu3(); 
+            } else{
+                System.out.println("\nPrimero debes elegir un fichero válido.");
+            } 
+        } while (opcion != 3);
     }
-    public static void SeleccionarFichero() {
-        if (carpeta == null) {
-            System.out.println("\nPrimero debes seleccionar una carpeta en el Menú 1.");
-            return;
-        }
+    
 
-    /* MostrarDetallesCarpeta(carpeta);*/
+    
 
-        sc.nextLine(); // Limpiar buffer
-        System.out.print("\nIntroduce el nombre del fichero dentro de la carpeta seleccionada: ");
-        String nombreFichero = sc.nextLine();
+    public static void seleccionarFichero() {
+        if (carpeta.exists() && carpeta.isDirectory()) {
+            sc.nextLine(); // Limpiar buffer
+            System.out.print("\nIntroduce el nombre del fichero dentro de la carpeta seleccionada: ");
+            try {
+                String nombreFichero = sc.nextLine();
 
-        File fichero = new File(carpeta, nombreFichero);
-        if (fichero.exists() && fichero.isFile()) {
-            ficheroSeleccionado = fichero;
-            System.out.println("\nFichero '" + nombreFichero + "' seleccionado correctamente.");
-        } else {
-            System.out.println("\nEl fichero especificado no existe o no es válido.");
-            ficheroSeleccionado = null; // Reiniciar para evitar problemas
+                File fichero = new File(carpeta, nombreFichero);
+                if (fichero.exists() && fichero.isFile()) {
+                    ficheroSeleccionado = fichero;
+                    System.out.println("\nFichero '" + nombreFichero + "' seleccionado correctamente.");
+                    leerFichero();
+                } else {
+                    System.out.println("\nEl fichero especificado no existe o no es válido.");
+                    ficheroSeleccionado = null; // Reiniciar para evitar problemas
+                }
+            } catch (Exception e) {
+                System.err.println("Error al seleccionar el fichero " + e.getMessage());
+            } 
         }
     }
 
-    public static void LeerFichero() {
+    public static void leerFichero() {
         sc.nextLine();
         if (ficheroSeleccionado == null) {
-            System.out.println("\nPrimero debes seleccionar un fichero en el Menú 2.");
+            System.out.println("\nNo se ha seleccionado ningún fichero.");
             return;
         }
+        if (ficheroSeleccionado.exists() && ficheroSeleccionado.isFile()) {
+            gestorActual = null;
+            String nombre = ficheroSeleccionado.getName();
+            String extension = nombre.substring(nombre.lastIndexOf('.') + 1).toLowerCase();
     
-        gestorActual = null;
-        String nombre = ficheroSeleccionado.getName();
-        String extension = nombre.substring(nombre.lastIndexOf('.') + 1).toLowerCase();
+            switch (extension) {
+                case "csv" -> {
+                    Csv.leerCsv(ficheroSeleccionado);
+                    gestorActual = Csv.getGestor();}
+                
+                case "xml" -> {
+                    Xml.leerXml(ficheroSeleccionado);
+                    gestorActual = Xml.getGestor();}
+                
+                case "json" -> {
+                    Json.leerJson(ficheroSeleccionado);
+                    gestorActual = Json.getGestor();}
+                
+                default ->
+                    {System.out.println("\nFormato no soportado: " + extension);}    
+            }
     
-        switch (extension) {
-            case "csv" -> {
-                Csv.leerCsv(ficheroSeleccionado);
-                gestorActual = Csv.getGestor();}
-                
-            case "xml" -> {
-                Xml.leerXml(ficheroSeleccionado);
-                gestorActual = Xml.getGestor();}
-                
-            case "json" -> {
-                Json.leerJson(ficheroSeleccionado);
-                gestorActual = Json.getGestor();}
-                
-            default ->
-                {System.out.println("\nFormato no soportado: " + extension);}
-                
         }
-    
+        
         if (gestorActual != null && !gestorActual.getItems().isEmpty()) {
             System.out.println("\nDatos del fichero leidos y cargados correctamente en memoria");
         } else {
@@ -139,55 +151,69 @@ public class App {
     }
     
 
-    public static void Menu3() {
+    public static void menu3() {
         int opcion;
         do {
-            System.out.println("\n-------------------- MENÚ  --------------------");
-            MostrarEstadoActual(); 
-            System.out.println("\n\n1. Conversión a CSV");
-            System.out.println("2. Conversión a JSON");
-            System.out.println("3. Conversión a XML");
-            System.out.println("4. Volver al menú anterior");
+            System.out.println("\n----------------- MENÚ CONVERSOR -----------------");
+            mostrarEstadoActual(); 
+            System.out.println("\n\n1. Convertir el fichero a CSV");
+            System.out.println("2. Convertir el fichero a JSON");
+            System.out.println("3. Convertir el fichero a XML");
+            System.out.println("4. Elegir otro fichero para leer.");
+            System.out.println("5. Volver al menú anterior");
             System.out.print("Elija una opción: ");
-            opcion = sc.nextInt();
+            opcion = Integer.parseInt(sc.nextLine());
 
             switch (opcion) {
-                case 1 -> ConvertirFormato("csv");
-                case 2 -> ConvertirFormato("json");
-                case 3 -> ConvertirFormato("xml");
-                case 4 -> System.out.println("Volviendo al menú anterior...");
+                case 1 -> convertirFormato("csv");
+                case 2 -> convertirFormato("json");
+                case 3 -> convertirFormato("xml");
+                case 4 -> seleccionarFichero();
+                case 5 -> System.out.println("Volviendo al menú anterior...");
                 default -> System.out.println("Opción no válida.");
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
     }
 
-    public static void ConvertirFormato(String formato) {
+    public static void convertirFormato(String formato) {
+        int contadorArchivos = 0;
+        File ficheroSalida = null;
         if (gestorActual == null || gestorActual.getItems().isEmpty()) {
             System.out.println("\nPrimero debes leer un fichero válido");
-            return;
+            seleccionarFichero();
         }
-    
-        sc.nextLine();
-        System.out.print("\nNombre del archivo de salida (sin extensión): ");
-        String nombreSalida = sc.nextLine();
-    
-        File archivoSalida = new File(carpeta, nombreSalida + "." + formato);
+        else{
+            try {
+                sc.nextLine();
+                System.out.print("\nNombre del archivo de salida (sin extensión): ");
+                String nombreSalida = sc.nextLine();
+        
+                ficheroSalida = new File(carpeta, nombreSalida + "." + formato.toLowerCase());
+                while(ficheroSalida.exists()){
+                    System.out.println("El nombre del fichero ya existe en esta ruta. Le asignaremos un número para distinguirlo del original:");
+                    ficheroSalida = new File (carpeta, nombreSalida + (++contadorArchivos) + "." + formato.toLowerCase());
+                }
+            } catch (Exception e) {
+                System.err.println("Error al formatear el archivo de salida.");
+            }
+
+        }
         boolean exito = false;
     
         switch (formato.toLowerCase()) {
             case "csv":
-                exito = Csv.escribirCsv(gestorActual.getItems(), archivoSalida);
+                exito = Csv.escribirCsv(gestorActual.getItems(), ficheroSalida);
                 break;
             case "json":
-                exito = Json.escribirJson(gestorActual.getItems(), archivoSalida);
+                exito = Json.escribirJson(gestorActual.getItems(), ficheroSalida);
                 break;
             case "xml":
-                exito = Xml.escribirXml(gestorActual.getItems(), archivoSalida);
+                exito = Xml.escribirXml(gestorActual.getItems(), ficheroSalida);
                 break;
         }
     
         if (exito) {
-            System.out.println("\nConversión exitosa: " + archivoSalida.getAbsolutePath());
+            System.out.println("\nConversión exitosa: " + ficheroSalida.getAbsolutePath());
         } else {
             System.out.println("\nError en la conversión");
         }
@@ -195,7 +221,7 @@ public class App {
     
 
 
-    public static void MostrarEstadoActual() {
+    public static void mostrarEstadoActual() {
         
         String rutaCarpetaSeleccionada = ruta.isEmpty() ? "" : ruta;
         String ficheroSeleccionadoNombre = (ficheroSeleccionado == null) ? "" : ficheroSeleccionado.getName();

@@ -54,16 +54,16 @@ abstract class Json{
     public static boolean escribirJson(List<HashMap<String, String>> estDatos, File ficheroOutput) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroOutput))) {
             bw.write("[\n");
-            if (!estDatos.isEmpty()) { //Escribimos sólo si fichero no está vacío.
+            if (!estDatos.isEmpty()) { //Escribimos sólo si la estructura de datos no está vacía.
                 for(int i=0; i<estDatos.size(); i++){
-                    bw.write(" {\n");
+                    bw.write("  {\n");
                     HashMap<String, String> elemento = estDatos.get(i);
                     int contador = 0;
                     for(String par : elemento.keySet()){
                         bw.write("    \"" + par + "\": \"" + elemento.get(par) + "\"");
                         contador++;
                         if(contador == elemento.size()){
-                            bw.write("\n }");
+                            bw.write("\n  }");
                         }else{
                             bw.write(",\n");
                         }
@@ -85,25 +85,6 @@ abstract class Json{
 }
 
 
-    
-
-
-
-    /*
-     * Logica para despues volver a este metodo un auto incremental
-     * 
-     * private static final String ficheroCSV = "ficheroCSV";
-        private static int contador = 1;
-
-        este bucle viene ya dntro del metodo
-
-        do {
-        ficheroCSVArchivo = ficheroCSV + "_" + contador + ".csv";
-        file = new File(ficheroCSVArchivo);
-        contador++;
-    
-        } while (file.exists());
-     */
 
 
 

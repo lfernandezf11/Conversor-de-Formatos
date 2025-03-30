@@ -29,30 +29,29 @@ abstract class Xml {
             String linea;
             HashMap<String, String> elemento = null;
             String key = null;
-            String valor = null;
             boolean dentroDeElemento = false; // Una bandera para saber si estamos dentro de  <...> o no
             
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
-                //Trabajamos con las líneas que no están vacías y no son la de inicio de un documento xml
-                if (!linea.isEmpty() && !linea.startsWith("<?xml")) { 
-                    // Línea de apertura: empieza por < y no contiene </. Descarta líneas de pares clave-valor y línea de cierre.   
-                    if (linea.startsWith("<") && !linea.contains("</") && !dentroDeElemento) {
-                        elemento = new HashMap<>(); //Inicia la estructura de datos.
+    
+                if (!linea.isEmpty() && !linea.startsWith("<?xml")) { //Trabajamos con las líneas que no están vacías y no son la de inicio de doc. xml
+                    // Creamos el mapa al detectar una línea <texto> que no contiene etiqueta de cierre (</)
+                    if (linea.startsWith("<") && linea.endsWith(">") && !linea.contains("</")) {
+                        elemento = new HashMap<>();
                         dentroDeElemento = true;
                     } 
-                    // Línea de par clave-valor. Empieza por < y contiene </. Descarta línea de cierre porque no empieza por </.
+                    // Una vez dentro del elemento, rellenamos clave y valor sustrayendo por índices.
                     else if (dentroDeElemento && linea.startsWith("<") && linea.contains("</")) {
                         key = linea.substring(1, linea.indexOf(">"));
-                        valor = linea.substring(linea.indexOf(">") + 1, linea.indexOf("</"));
-                        elemento.put(key, valor);
+                        String valor = linea.substring(linea.indexOf(">") + 1, linea.indexOf("</"));
+                        elemento.put(key, valor); // Añadimos el par al mapa elemento.
                     }
-                    // Línea de cierre revierte la bandera y reinicia los valores después de añadir el elemento al gestor.
+                    // Cerramos el mapa al detectar una línea correspondiente a etiqueta de cierre (empieza en </)
                     else if (linea.startsWith("</") && dentroDeElemento) {
-                        gestorXml.addItem(elemento);
-                        elemento = null; key = null; valor = null;
+                        gestorXml.addItem(elemento); // Añadimos al ArrayList el mapa y marcamos el boolean como falso.
+                        elemento = null;
                         dentroDeElemento = false;
-                    }  
+                    } 
                 }
             }
         } catch (IOException e) {
