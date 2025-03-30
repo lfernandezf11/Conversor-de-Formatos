@@ -1,0 +1,72 @@
+[
+  {
+    "especie": "Dragón",
+    "tribu": "Dracónido",
+    "esperanzaDeVida": "1000 años",
+    "principalAliado": "Guerreros del Fuego",
+    "nombre": "Dragón Rojo"
+  },
+  {
+    "especie": "Elfo",
+    "tribu": "Drow",
+    "esperanzaDeVida": "750 años",
+    "principalAliado": "Asesinos de la Noche",
+    "nombre": "Elfo Sombrío"
+  },
+  {
+    "especie": "Orco",
+    "tribu": "Clanes del Trueno",
+    "esperanzaDeVida": "60 años",
+    "principalAliado": "Bárbaros Salvajes",
+    "nombre": "Orco de la Montaña"
+  },
+  {
+    "especie": "Grifo",
+    "tribu": "Bestias Aladas",
+    "esperanzaDeVida": "200 años",
+    "principalAliado": "Caballeros de la Luz",
+    "nombre": "Grifo Majestuoso"
+  },
+  {
+    "especie": "Enano",
+    "tribu": "Montaña del Acero",
+    "esperanzaDeVida": "350 años",
+    "principalAliado": "Mineros de Hierro",
+    "nombre": "Enano de la Forja"
+  },
+  {
+    "especie": "Licántropo",
+    "tribu": "Sombras de la Luna",
+    "esperanzaDeVida": "80 años",
+    "principalAliado": "Guardianes de la Noche",
+    "nombre": "Hombre Lobo Errante"
+  },
+  {
+    "especie": "Sirena",
+    "tribu": "Reinos del Mar",
+    "esperanzaDeVida": "200 años",
+    "principalAliado": "Navegantes del Abismo",
+    "nombre": "Sirena Encantadora"
+  },
+  {
+    "especie": "Constructo",
+    "tribu": "Golemitas",
+    "esperanzaDeVida": "Inmortal",
+    "principalAliado": "Magos de la Roca",
+    "nombre": "Golem de Piedra"
+  },
+  {
+    "especie": "Ave Mítica",
+    "tribu": "Renacidos del Fuego",
+    "esperanzaDeVida": "500 años",
+    "principalAliado": "Guardianes del Alba",
+    "nombre": "Fénix Resplandeciente"
+  },
+  {
+    "especie": "Troll",
+    "tribu": "Los Colmillos",
+    "esperanzaDeVida": "120 años",
+    "principalAliado": "Hordas de la Oscuridad",
+    "nombre": "Troll de la Cueva"
+  }
+]

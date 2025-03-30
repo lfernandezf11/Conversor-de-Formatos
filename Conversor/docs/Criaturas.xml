@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<criaturas>
+  <criatura>
+    <nombre>Dragón Rojo</nombre>
+    <especie>Dragón</especie>
+    <tribu>Dracónido</tribu>
+    <esperanzaDeVida>1000 años</esperanzaDeVida>
+    <principalAliado>Guerreros del Fuego</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Elfo Sombrío</nombre>
+    <especie>Elfo</especie>
+    <tribu>Drow</tribu>
+    <esperanzaDeVida>750 años</esperanzaDeVida>
+    <principalAliado>Asesinos de la Noche</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Orco de la Montaña</nombre>
+    <especie>Orco</especie>
+    <tribu>Clanes del Trueno</tribu>
+    <esperanzaDeVida>60 años</esperanzaDeVida>
+    <principalAliado>Bárbaros Salvajes</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Grifo Majestuoso</nombre>
+    <especie>Grifo</especie>
+    <tribu>Bestias Aladas</tribu>
+    <esperanzaDeVida>200 años</esperanzaDeVida>
+    <principalAliado>Caballeros de la Luz</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Enano de la Forja</nombre>
+    <especie>Enano</especie>
+    <tribu>Montaña del Acero</tribu>
+    <esperanzaDeVida>350 años</esperanzaDeVida>
+    <principalAliado>Mineros de Hierro</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Hombre Lobo Errante</nombre>
+    <especie>Licántropo</especie>
+    <tribu>Sombras de la Luna</tribu>
+    <esperanzaDeVida>80 años</esperanzaDeVida>
+    <principalAliado>Guardianes de la Noche</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Sirena Encantadora</nombre>
+    <especie>Sirena</especie>
+    <tribu>Reinos del Mar</tribu>
+    <esperanzaDeVida>200 años</esperanzaDeVida>
+    <principalAliado>Navegantes del Abismo</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Golem de Piedra</nombre>
+    <especie>Constructo</especie>
+    <tribu>Golemitas</tribu>
+    <esperanzaDeVida>Inmortal</esperanzaDeVida>
+    <principalAliado>Magos de la Roca</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Fénix Resplandeciente</nombre>
+    <especie>Ave Mítica</especie>
+    <tribu>Renacidos del Fuego</tribu>
+    <esperanzaDeVida>500 años</esperanzaDeVida>
+    <principalAliado>Guardianes del Alba</principalAliado>
+  </criatura>
+  <criatura>
+    <nombre>Troll de la Cueva</nombre>
+    <especie>Troll</especie>
+    <tribu>Los Colmillos</tribu>
+    <esperanzaDeVida>120 años</esperanzaDeVida>
+    <principalAliado>Hordas de la Oscuridad</principalAliado>
+  </criatura>
+</criaturas>
