@@ -1,58 +1,58 @@
 [
   {
     "Nombre": "Monkey D. Luffy",
-    "Recompensa": "3",
-    "Tripulacion": "000",
-    "Fruta": "000",
-    "Rol": "000 Berries"
+    "Recompensa": "3.000.000.000 Berries",
+    "Tripulacion": "Sombrero de Paja",
+    "Fruta": "Gomu Gomu no Mi",
+    "Rol": "Capitán"
   },
   {
     "Nombre": "Roronoa Zoro",
-    "Recompensa": "1",
-    "Tripulacion": "111",
-    "Fruta": "000",
-    "Rol": "000 Berries"
+    "Recompensa": "1.111.000.000 Berries",
+    "Tripulacion": "Sombrero de Paja",
+    "Fruta": "Ninguna",
+    "Rol": "Espadachín"
   },
   {
     "Nombre": "Sanji",
-    "Recompensa": "1",
-    "Tripulacion": "032",
-    "Fruta": "000",
-    "Rol": "000 Berries"
+    "Recompensa": "1.032.000.000 Berries",
+    "Tripulacion": "Sombrero de Paja",
+    "Fruta": "Ninguna",
+    "Rol": "Cocinero"
   },
   {
     "Nombre": "Trafalgar D. Water Law",
-    "Recompensa": "3",
-    "Tripulacion": "000",
-    "Fruta": "000",
-    "Rol": "000 Berries"
+    "Recompensa": "3.000.000.000 Berries",
+    "Tripulacion": "Heart Pirates",
+    "Fruta": "Ope Ope no Mi",
+    "Rol": "Capitán / Médico"
   },
   {
     "Nombre": "Shanks",
-    "Recompensa": "4",
-    "Tripulacion": "048",
-    "Fruta": "900",
-    "Rol": "000 Berries"
+    "Recompensa": "4.048.900.000 Berries",
+    "Tripulacion": "Piratas del Pelirrojo",
+    "Fruta": "Ninguna",
+    "Rol": "Capitán"
   },
   {
     "Nombre": "Blackbeard (Marshall D. Teach)",
-    "Recompensa": "3",
-    "Tripulacion": "996",
-    "Fruta": "000",
-    "Rol": "000 Berries"
+    "Recompensa": "3.996.000.000 Berries",
+    "Tripulacion": "Piratas de Barbanegra",
+    "Fruta": "Yami Yami no Mi",
+    "Rol": " Gura Gura no Mi"
   },
   {
     "Nombre": "Boa Hancock",
-    "Recompensa": "1",
-    "Tripulacion": "659",
-    "Fruta": "000",
-    "Rol": "000 Berries"
+    "Recompensa": "1.659.000.000 Berries",
+    "Tripulacion": "Kuja Pirates",
+    "Fruta": "Mero Mero no Mi",
+    "Rol": "Capitana"
   },
   {
     "Nombre": "Eustass Kid",
-    "Recompensa": "3",
-    "Tripulacion": "000",
-    "Fruta": "000",
-    "Rol": "000 Berries"
+    "Recompensa": "3.000.000.000 Berries",
+    "Tripulacion": "Kid Pirates",
+    "Fruta": "Jiki Jiki no Mi",
+    "Rol": "Capitán"
   }
 ]

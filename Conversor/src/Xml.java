@@ -29,32 +29,38 @@ abstract class Xml {
             String linea;
             HashMap<String, String> elemento = null;
             String key = null;
+            String valor = null;
             boolean dentroDeElemento = false; // Una bandera para saber si estamos dentro de  <...> o no
             
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
-    
                 if (!linea.isEmpty() && !linea.startsWith("<?xml")) { //Trabajamos con las líneas que no están vacías y no son la de inicio de doc. xml
                     // Creamos el mapa al detectar una línea <texto> que no contiene etiqueta de cierre (</)
                     if (linea.startsWith("<") && linea.endsWith(">") && !linea.contains("</")) {
+                        br.readLine();
                         elemento = new HashMap<>();
                         dentroDeElemento = true;
                     } 
-                    // Una vez dentro del elemento, rellenamos clave y valor sustrayendo por índices.
-                    else if (dentroDeElemento && linea.startsWith("<") && linea.contains("</")) {
-                        key = linea.substring(1, linea.indexOf(">"));
-                        String valor = linea.substring(linea.indexOf(">") + 1, linea.indexOf("</"));
-                        elemento.put(key, valor); // Añadimos el par al mapa elemento.
-                    }
                     // Cerramos el mapa al detectar una línea correspondiente a etiqueta de cierre (empieza en </)
                     else if (linea.startsWith("</") && dentroDeElemento) {
                         gestorXml.addItem(elemento); // Añadimos al ArrayList el mapa y marcamos el boolean como falso.
                         elemento = null;
                         dentroDeElemento = false;
                     } 
+                    // Una vez dentro del elemento, rellenamos clave y valor sustrayendo por índices.
+                    else if (dentroDeElemento && linea.startsWith("<") && linea.contains("</")) {
+                        int tagApertura = linea.indexOf(">");
+                        int tagCierre = linea.indexOf("</");
+                        if (tagApertura != -1 && tagCierre != -1 && tagApertura < tagCierre) {
+                            key = linea.substring(1, tagApertura);
+                            valor = linea.substring(tagApertura + 1, tagCierre);
+                            elemento.put(key, valor);
+                        }
+                    }
+                    
                 }
-            }
-        } catch (IOException e) {
+            } 
+        }  catch (IOException e) {
             System.err.println("Error al leer: " + e.getMessage());
         }
         return gestorXml;

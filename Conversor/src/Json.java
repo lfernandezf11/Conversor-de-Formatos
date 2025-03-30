@@ -31,9 +31,9 @@ abstract class Json{
                     HashMap <String, String> item = new HashMap<>();
                     while((linea = br.readLine()) != null && !linea.trim().equals("},")){
                         String [] pares = linea.trim().split(":", 2);
-                        if(pares.length == 2){ // Sólo asigna si la longitud del array es dos. Se saltará ']'.
-                            String key = pares[0].trim().replaceAll("[\",\\.]", "");
-                            String value = pares[1].trim().replaceAll("[\",\\.]", "");
+                        if(pares.length == 2){ // Sólo asigna si la longitud del array es dos. Se saltará ']'.   
+                        String key = pares[0].trim().replaceAll("[\",1]", "");
+                            String value = pares[1].trim().replaceAll("[\",]", "");
                             item.put(key, value);
                         }
                     }gestorJson.addItem(item);   
@@ -60,7 +60,7 @@ abstract class Json{
                     HashMap<String, String> elemento = estDatos.get(i);
                     int contador = 0;
                     for(String par : elemento.keySet()){
-                        bw.write("    \"" + par + "\": \"" + elemento.get(par) + "\"");
+                        bw.write("    \"" + par.replaceAll("\"", "") + "\": \"" + elemento.get(par).replaceAll("\"", "") + "\"");
                         contador++;
                         if(contador == elemento.size()){
                             bw.write("\n  }");

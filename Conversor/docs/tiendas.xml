@@ -1,9 +1,9 @@
 <elementos>
   <elemento>
-    <cuota anual de inscripción>20</cuota anual de inscripción>
+    <cuota_anual_de_inscripción>20</cuota_anuald_e inscripción>
     <tamaño>Grande</tamaño>
     <dirección>Av de los Comics 101 Madrid</dirección>
-    <nombre del último premio concedido>Premio Innovación Cómica</nombre del último premio concedido>
+    <nombre_del_último_premio_concedido>Premio Innovación Cómica</nombre del último premio concedido>
     <nombre>Comic Universe</nombre>
     <número de socios>150</número de socios>
     <año de fundación>1998</año de fundación>

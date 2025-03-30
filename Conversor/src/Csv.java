@@ -55,7 +55,6 @@ abstract class Csv{
     public static boolean escribirCsv(List<HashMap<String, String>> estDatos, File ficheroOutput) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroOutput))) {
             String newLine = "";
-            //Implementar comprobación ficheroCSV.length() == 0 and exists.
             // Escribir cabeceras
             if (!estDatos.isEmpty()) { //Escribimos sólo si fichero no está vacío.
                 HashMap<String, String> primeraFila = estDatos.get(0);

@@ -4,56 +4,56 @@
   <personaje>
     <Nombre>Monkey D. Luffy</Nombre>
     <Tripulacion>Sombrero de Paja</Tripulacion>
-    <Recompensa>3,000,000,000 Berries</Recompensa>
+    <Recompensa>3.000.000.000 Berries</Recompensa>
     <Fruta>Gomu Gomu no Mi</Fruta>
     <Rol>Capitán</Rol>
   </personaje>
   <personaje>
     <Nombre>Roronoa Zoro</Nombre>
     <Tripulacion>Sombrero de Paja</Tripulacion>
-    <Recompensa>1,111,000,000 Berries</Recompensa>
+    <Recompensa>1.111.000.000 Berries</Recompensa>
     <Fruta>Ninguna</Fruta>
     <Rol>Espadachín</Rol>
   </personaje>
   <personaje>
     <Nombre>Sanji</Nombre>
     <Tripulacion>Sombrero de Paja</Tripulacion>
-    <Recompensa>1,032,000,000 Berries</Recompensa>
+    <Recompensa>1.032.000.000 Berries</Recompensa>
     <Fruta>Ninguna</Fruta>
     <Rol>Cocinero</Rol>
   </personaje>
   <personaje>
     <Nombre>Trafalgar D. Water Law</Nombre>
     <Tripulacion>Heart Pirates</Tripulacion>
-    <Recompensa>3,000,000,000 Berries</Recompensa>
+    <Recompensa>3.000.000.000 Berries</Recompensa>
     <Fruta>Ope Ope no Mi</Fruta>
     <Rol>Capitán / Médico</Rol>
   </personaje>
   <personaje>
     <Nombre>Shanks</Nombre>
     <Tripulacion>Piratas del Pelirrojo</Tripulacion>
-    <Recompensa>4,048,900,000 Berries</Recompensa>
+    <Recompensa>4.048.900.000 Berries</Recompensa>
     <Fruta>Ninguna</Fruta>
     <Rol>Capitán</Rol>
   </personaje>
   <personaje>
     <Nombre>Blackbeard (Marshall D. Teach)</Nombre>
     <Tripulacion>Piratas de Barbanegra</Tripulacion>
-    <Recompensa>3,996,000,000 Berries</Recompensa>
+    <Recompensa>3.996.000.000 Berries</Recompensa>
     <Fruta>Yami Yami no Mi, Gura Gura no Mi</Fruta>
     <Rol>Capitán</Rol>
   </personaje>
   <personaje>
     <Nombre>Boa Hancock</Nombre>
     <Tripulacion>Kuja Pirates</Tripulacion>
-    <Recompensa>1,659,000,000 Berries</Recompensa>
+    <Recompensa>1.659.000.000 Berries</Recompensa>
     <Fruta>Mero Mero no Mi</Fruta>
     <Rol>Capitana</Rol>
   </personaje>
   <personaje>
     <Nombre>Eustass Kid</Nombre>
     <Tripulacion>Kid Pirates</Tripulacion>
-    <Recompensa>3,000,000,000 Berries</Recompensa>
+    <Recompensa>3.000.000.000 Berries</Recompensa>
     <Fruta>Jiki Jiki no Mi</Fruta>
     <Rol>Capitán</Rol>
   </personaje>
