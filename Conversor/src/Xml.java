@@ -37,7 +37,6 @@ abstract class Xml {
                 if (!linea.isEmpty() && !linea.startsWith("<?xml")) { //Trabajamos con las líneas que no están vacías y no son la de inicio de doc. xml
                     // Creamos el mapa al detectar una línea <texto> que no contiene etiqueta de cierre (</)
                     if (linea.startsWith("<") && linea.endsWith(">") && !linea.contains("</")) {
-                        br.readLine();
                         elemento = new HashMap<>();
                         dentroDeElemento = true;
                     } 

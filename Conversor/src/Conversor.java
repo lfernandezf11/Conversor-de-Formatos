@@ -161,8 +161,8 @@ public class Conversor {
         }
         
         if (gestorActual != null && !gestorActual.getItems().isEmpty()) {
-            System.out.println("\nDatos del fichero leidos y cargados correctamente en memoria");
-            System.out.println(gestorActual.toString());
+            System.out.println("\nDatos del fichero leidos y cargados correctamente en memoria.\n");
+            
         } else {
             System.out.println("\nError al cargar los datos.");
         }
