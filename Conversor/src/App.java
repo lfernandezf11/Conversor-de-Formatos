@@ -2,6 +2,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+* @author Angel Andres Villorina  
+*/
 public class App {
 
     static Scanner sc = new Scanner(System.in);
@@ -47,7 +50,7 @@ public class App {
             System.out.println("\nLa carpeta '" + ruta + "' existe y es válida.\n");
         } else {
             System.out.println("\nLa ruta especificada no existe o no es una carpeta válida.\n");
-            carpeta = null; // Reiniciar para evitar problemas :(
+            carpeta = null; // Reiniciar para evitar que pete :(
         }
     }
 
